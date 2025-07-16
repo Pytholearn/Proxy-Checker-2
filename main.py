@@ -1,6 +1,18 @@
 import requests
 import time
+import AutoUpdate
 
+AutoUpdate.set_url("https://raw.githubusercontent.com/Pytholearn/Proxy-Checker-2/refs/heads/main/version")
+AutoUpdate.set_current_version("1.4.7")
+AutoUpdate.set_download_link("https://github.com/Pytholearn/Proxy-Checker-2.git")
+
+if not AutoUpdate.is_up_to_date():
+    print("Would you like to update your tool?")
+    choice = input("Enter (y/n): ")
+    if choice == "y":
+        AutoUpdate.update()
+    else:
+        pass
             
 with open("http_proxies.txt", "r") as file:
     proxies_list = [line.strip() for line in file if line.strip()]
